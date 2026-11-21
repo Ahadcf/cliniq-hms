@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cliniq Health | Multi-Specialty Hospital & Clinical Portal</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300B4A2'/%3E%3Cstop offset='100%25' stop-color='%232DD4BF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='url(%23g)' stroke-width='4.5' stroke-dasharray='155 24' stroke-linecap='round'/%3E%3Cpath d='M32 10 L46 24 L32 38 L18 24 Z' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M29 19 h6 v7 h7 v6 h-7 v7 h-6 v-7 h-7 v-6 h7 z' fill='%232DD4BF'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -155,12 +155,10 @@
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
         }
         #hero-3d-canvas {
-            position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
+            display: block;
             pointer-events: none;
-            z-index: 2;
         }
 
         @media print {
@@ -1238,11 +1236,22 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                         <!-- Brand Logo -->
                         <a href="#" class="flex items-center gap-3 group">
-                            <div class="w-10 h-10 rounded-full border-2 border-teal-400/80 flex items-center justify-center relative">
-                                <div class="w-5 h-5 rotate-45 border-2 border-white rounded-sm"></div>
-                                <div class="w-2 h-2 bg-teal-400 rounded-full absolute"></div>
+                            <svg class="w-10 h-10 shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-6" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="cliniqBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00B4A2"/>
+                                        <stop offset="100%" stop-color="#2DD4BF"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="28" stroke="url(#cliniqBrandGrad)" stroke-width="4.5" stroke-dasharray="158 22" stroke-linecap="round"/>
+                                <path d="M32 11 L45 24 L32 37 L19 24 Z" stroke="#FFFFFF" stroke-width="2.75" stroke-linejoin="round"/>
+                                <path d="M29.5 19.5 H34.5 V22.5 H37.5 V27.5 H34.5 V30.5 H29.5 V27.5 H26.5 V22.5 H29.5 Z" fill="#2DD4BF"/>
+                                <circle cx="32" cy="52" r="2.5" fill="#2DD4BF"/>
+                            </svg>
+                            <div class="flex flex-col leading-none">
+                                <span class="text-2xl font-extrabold tracking-tight text-white">cliniq<span class="text-teal-400">.</span></span>
+                                <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-300/90 mt-0.5">Health</span>
                             </div>
-                            <span class="text-2xl font-extrabold tracking-tight text-white">cliniq</span>
                         </a>
 
                         <!-- Navigation Links -->
@@ -1269,28 +1278,36 @@
                 <!-- Hero Section with Geometric Teal/Navy Triangles & Glassmorphism Action Cards -->
                 <section id="hero" class="hero-bg relative overflow-hidden text-white">
                     <div class="geometric-triangles absolute inset-y-0 left-0 w-1/2 opacity-80 pointer-events-none"></div>
-                    <!-- Three.js 3D Animated Medical Assets Canvas (Syringe, Surgical Mask, Capsule, Medical Cross) -->
-                    <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
                     
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-24 relative z-10">
-                        <div class="max-w-2xl">
-                            <!-- Emblem Badge -->
-                            <div class="inline-flex items-center gap-3 mb-6 animate-hero-1">
-                                <div class="w-11 h-11 rounded-full bg-white/10 border border-white/25 flex items-center justify-center text-teal-400">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 lg:pt-16 lg:pb-24 relative z-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <!-- Left Column: Clinical Headline & Subcopy -->
+                            <div class="lg:col-span-6">
+                                <!-- Emblem Badge -->
+                                <div class="inline-flex items-center gap-3 mb-6 animate-hero-1">
+                                    <div class="w-11 h-11 rounded-full bg-white/10 border border-white/25 flex items-center justify-center text-teal-400">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                    </div>
+                                    <div class="text-xs leading-tight text-slate-200 font-medium">
+                                        <span class="block font-bold text-white">Healthcare Clinics</span>
+                                        <span>Multi-Specialty Clinical Network</span>
+                                    </div>
                                 </div>
-                                <div class="text-xs leading-tight text-slate-200 font-medium">
-                                    <span class="block font-bold text-white">Healthcare Clinics</span>
-                                    <span>Multi-Specialty Clinical Network</span>
-                                </div>
+
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white animate-hero-2">
+                                    Our expertise at<br>your service
+                                </h1>
+                                <p class="mt-5 text-base sm:text-lg text-slate-200 max-w-xl leading-relaxed animate-hero-3">
+                                    Seamless outpatient scheduling, verified digital prescriptions, and transparent real-time hospital billing powered by Cliniq Clinical Systems.
+                                </p>
                             </div>
 
-                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white animate-hero-2">
-                                Our expertise at<br>your service
-                            </h1>
-                            <p class="mt-5 text-base sm:text-lg text-slate-200 max-w-xl leading-relaxed animate-hero-3">
-                                Seamless outpatient scheduling, verified digital prescriptions, and transparent real-time hospital billing powered by Cliniq Clinical Systems.
-                            </p>
+                            <!-- Right Column: Ambient Floating 3D Clinical Syringe -->
+                            <div class="lg:col-span-6 animate-hero-3 pointer-events-none select-none flex items-center justify-center">
+                                <div id="hero-3d-stage" class="relative w-full h-[360px] sm:h-[420px] lg:h-[460px] overflow-visible">
+                                    <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- 3 Glassmorphism Action Cards Bar (Direct visual match to reference) -->
@@ -2475,259 +2492,297 @@
 
         function initHero3DScene() {
             const canvas = document.getElementById('hero-3d-canvas');
-            if (!canvas || typeof THREE === 'undefined') return;
+            const stage = document.getElementById('hero-3d-stage');
+            if (!canvas || !stage) return;
 
             if (hero3DAnimId) {
                 cancelAnimationFrame(hero3DAnimId);
                 hero3DAnimId = null;
             }
 
-            const heroEl = document.getElementById('hero');
-            const width = heroEl ? heroEl.clientWidth : window.innerWidth;
-            const height = heroEl ? heroEl.clientHeight : 650;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 1000);
-            camera.position.set(0, 0, 14);
+            let width = 560;
+            let height = 440;
 
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-            renderer.setSize(width, height);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            function resizeCanvas() {
+                if (!stage || !canvas) return;
+                const rect = stage.getBoundingClientRect();
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                width = Math.max(1, rect.width);
+                height = Math.max(1, rect.height);
+                canvas.width = Math.round(width * dpr);
+                canvas.height = Math.round(height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resizeCanvas();
 
-            // Clinical Lighting Setup
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
-            scene.add(ambientLight);
+            // Uniform 3D Vector Math & Aspect-Ratio-Locked Perspective Projection
+            function rotatePoint(p, rx, ry, rz) {
+                let { x, y, z } = p;
+                const cy = Math.cos(rx), sy = Math.sin(rx);
+                const y1 = y * cy - z * sy;
+                const z1 = y * sy + z * cy;
+                y = y1; z = z1;
 
-            const tealPoint = new THREE.PointLight(0x00B4A2, 2.2, 40);
-            tealPoint.position.set(6, 5, 8);
-            scene.add(tealPoint);
+                const cx = Math.cos(ry), sx = Math.sin(ry);
+                const x2 = x * cx + z * sx;
+                const z2 = -x * sx + z * cx;
+                x = x2; z = z2;
 
-            const coolDir = new THREE.DirectionalLight(0xE0F2FE, 1.3);
-            coolDir.position.set(-6, 8, 10);
-            scene.add(coolDir);
-
-            const rootGroup = new THREE.Group();
-            scene.add(rootGroup);
-
-            // 1. 3D ARTICULATED SYRINGE (Barrel, Liquid Chamber, Plunger, Metallic Needle)
-            const syringeGroup = new THREE.Group();
-            const barrelGeo = new THREE.CylinderGeometry(0.36, 0.36, 2.4, 24);
-            const barrelMat = new THREE.MeshPhysicalMaterial({
-                color: 0xE2E8F0,
-                transparent: true,
-                opacity: 0.38,
-                roughness: 0.15,
-                metalness: 0.1,
-                clearcoat: 1.0
-            });
-            const barrel = new THREE.Mesh(barrelGeo, barrelMat);
-            syringeGroup.add(barrel);
-
-            // Teal Serum Liquid Inside Barrel
-            const liquidGeo = new THREE.CylinderGeometry(0.31, 0.31, 1.35, 24);
-            const liquidMat = new THREE.MeshStandardMaterial({
-                color: 0x00B4A2,
-                emissive: 0x006B60,
-                emissiveIntensity: 0.45,
-                roughness: 0.25
-            });
-            const liquid = new THREE.Mesh(liquidGeo, liquidMat);
-            liquid.position.y = -0.35;
-            syringeGroup.add(liquid);
-
-            // Graduation Rings on Barrel
-            const ringMat = new THREE.MeshBasicMaterial({ color: 0x94A3B8 });
-            for (let i = -0.8; i <= 0.8; i += 0.4) {
-                const tick = new THREE.Mesh(new THREE.TorusGeometry(0.365, 0.012, 8, 24), ringMat);
-                tick.rotation.x = Math.PI / 2;
-                tick.position.y = i;
-                syringeGroup.add(tick);
+                const cz = Math.cos(rz), sz = Math.sin(rz);
+                const x3 = x * cz - y * sz;
+                const y3 = x * sz + y * cz;
+                return { x: x3, y: y3, z };
             }
 
-            // Finger Flange
-            const flange = new THREE.Mesh(new THREE.CylinderGeometry(0.58, 0.58, 0.08, 24), new THREE.MeshStandardMaterial({ color: 0xF8FAFC, roughness: 0.3 }));
-            flange.position.y = 1.22;
-            syringeGroup.add(flange);
-
-            // Animated Plunger Assembly
-            const plungerGroup = new THREE.Group();
-            const plungerRod = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 1.6, 16), new THREE.MeshStandardMaterial({ color: 0xCBD5E1, metalness: 0.3, roughness: 0.3 }));
-            plungerRod.position.y = 1.65;
-            const thumbRest = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.08, 24), new THREE.MeshStandardMaterial({ color: 0x00B4A2, roughness: 0.3 }));
-            thumbRest.position.y = 2.45;
-            const rubberStopper = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.18, 20), new THREE.MeshStandardMaterial({ color: 0x0F172A, roughness: 0.7 }));
-            rubberStopper.position.y = 0.85;
-            plungerGroup.add(plungerRod, thumbRest, rubberStopper);
-            syringeGroup.add(plungerGroup);
-
-            // Needle Hub & Stainless Steel Needle
-            const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.32, 16), new THREE.MeshStandardMaterial({ color: 0x00B4A2 }));
-            hub.position.y = -1.35;
-            const needle = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.035, 1.35, 12), new THREE.MeshStandardMaterial({ color: 0xF1F5F9, metalness: 0.9, roughness: 0.15 }));
-            needle.position.y = -2.15;
-            syringeGroup.add(hub, needle);
-
-            syringeGroup.position.set(4.6, 1.6, 0.5);
-            syringeGroup.rotation.set(0.35, 0.4, -0.55);
-            rootGroup.add(syringeGroup);
-
-            // 2. 3D CONTOURED SURGICAL MASK (Pleated Body, Nose Wire, Elastic Ear Loops)
-            const maskGroup = new THREE.Group();
-            const maskGeo = new THREE.PlaneGeometry(2.5, 1.55, 24, 18);
-            const posAttr = maskGeo.attributes.position;
-            for (let i = 0; i < posAttr.count; i++) {
-                const x = posAttr.getX(i);
-                const y = posAttr.getY(i);
-                // Cylindrical face curvature + horizontal surgical pleats
-                const curveZ = Math.cos((x / 1.25) * (Math.PI / 2.2)) * 0.55;
-                const pleatZ = Math.sin(y * 14.0) * 0.055;
-                posAttr.setZ(i, curveZ + pleatZ);
+            // Symmetric focal length ensures zero stretching on ultrawide or full-screen displays
+            function project3D(p, focalLength = 640) {
+                const scale = focalLength / (focalLength + p.z);
+                return {
+                    x: width * 0.5 + p.x * scale,
+                    y: height * 0.5 + p.y * scale,
+                    z: p.z,
+                    scale
+                };
             }
-            maskGeo.computeVertexNormals();
 
-            const maskMat = new THREE.MeshStandardMaterial({
-                color: 0x2DD4BF,
-                roughness: 0.65,
-                metalness: 0.05,
-                side: THREE.DoubleSide
-            });
-            const maskMesh = new THREE.Mesh(maskGeo, maskMat);
-            maskGroup.add(maskMesh);
+            // Build 3D Cylinder Mesh helper
+            function createCylinderPolygons(radiusTop, radiusBottom, h, segments, colorFn, offset, rot, stroke = null) {
+                const polys = [];
+                const halfH = h / 2;
+                for (let i = 0; i < segments; i++) {
+                    const a0 = (i / segments) * Math.PI * 2;
+                    const a1 = ((i + 1) / segments) * Math.PI * 2;
+                    const midA = (a0 + a1) * 0.5;
 
-            // White Border Trim & Nose Bridge Strip
-            const noseStrip = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.08, 0.06), new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 0.3 }));
-            noseStrip.position.set(0, 0.68, 0.54);
-            maskGroup.add(noseStrip);
+                    const pts = [
+                        { x: Math.cos(a0) * radiusTop, y: -halfH, z: Math.sin(a0) * radiusTop },
+                        { x: Math.cos(a1) * radiusTop, y: -halfH, z: Math.sin(a1) * radiusTop },
+                        { x: Math.cos(a1) * radiusBottom, y: halfH, z: Math.sin(a1) * radiusBottom },
+                        { x: Math.cos(a0) * radiusBottom, y: halfH, z: Math.sin(a0) * radiusBottom }
+                    ].map(v => {
+                        const r = rotatePoint(v, rot.x, rot.y, rot.z);
+                        return { x: r.x + offset.x, y: r.y + offset.y, z: r.z + offset.z };
+                    });
 
-            // Left & Right Elastic Ear Loops
-            const loopMat = new THREE.MeshStandardMaterial({ color: 0xF8FAFC, roughness: 0.5 });
-            [-1, 1].forEach(side => {
-                const curve = new THREE.CatmullRomCurve3([
-                    new THREE.Vector3(side * 1.22, 0.65, 0.05),
-                    new THREE.Vector3(side * 1.78, 0.45, -0.35),
-                    new THREE.Vector3(side * 1.82, -0.35, -0.35),
-                    new THREE.Vector3(side * 1.22, -0.65, 0.05)
-                ]);
-                const tubeGeo = new THREE.TubeGeometry(curve, 20, 0.028, 8, false);
-                maskGroup.add(new THREE.Mesh(tubeGeo, loopMat));
-            });
+                    polys.push({
+                        pts,
+                        fill: colorFn(midA),
+                        stroke
+                    });
+                }
+                return polys;
+            }
 
-            maskGroup.position.set(2.2, -1.7, 1.2);
-            maskGroup.rotation.set(-0.2, -0.45, 0.18);
-            rootGroup.add(maskGroup);
+            // Build Circular Cap Disk for Cylinder Ends
+            function createCapPolygon(radius, yPos, segments, fill, offset, rot, stroke = null) {
+                const pts = [];
+                for (let i = 0; i < segments; i++) {
+                    const a = (i / segments) * Math.PI * 2;
+                    const r = rotatePoint({ x: Math.cos(a) * radius, y: yPos, z: Math.sin(a) * radius }, rot.x, rot.y, rot.z);
+                    pts.push({ x: r.x + offset.x, y: r.y + offset.y, z: r.z + offset.z });
+                }
+                return [{ pts, fill, stroke }];
+            }
 
-            // 3. 3D TWO-TONE MEDICINE CAPSULE
-            const capsuleGroup = new THREE.Group();
-            const capTop = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.28, 0.28, 0.55, 20),
-                new THREE.MeshPhysicalMaterial({ color: 0x00B4A2, roughness: 0.2, clearcoat: 0.9 })
-            );
-            capTop.position.y = 0.275;
-            const domeTop = new THREE.Mesh(
-                new THREE.SphereGeometry(0.28, 20, 16),
-                new THREE.MeshPhysicalMaterial({ color: 0x00B4A2, roughness: 0.2, clearcoat: 0.9 })
-            );
-            domeTop.position.y = 0.55;
+            const resizeObserver = typeof ResizeObserver !== 'undefined'
+                ? new ResizeObserver(() => resizeCanvas())
+                : null;
+            if (resizeObserver) resizeObserver.observe(stage);
+            window.addEventListener('resize', resizeCanvas, { passive: true });
 
-            const capBottom = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.28, 0.28, 0.55, 20),
-                new THREE.MeshPhysicalMaterial({ color: 0xF8FAFC, roughness: 0.2, clearcoat: 0.9 })
-            );
-            capBottom.position.y = -0.275;
-            const domeBottom = new THREE.Mesh(
-                new THREE.SphereGeometry(0.28, 20, 16),
-                new THREE.MeshPhysicalMaterial({ color: 0xF8FAFC, roughness: 0.2, clearcoat: 0.9 })
-            );
-            domeBottom.position.y = -0.55;
+            const startTime = performance.now();
 
-            capsuleGroup.add(capTop, domeTop, capBottom, domeBottom);
-            capsuleGroup.position.set(5.8, -1.3, -0.4);
-            capsuleGroup.rotation.set(0.5, 0.3, 0.75);
-            rootGroup.add(capsuleGroup);
-
-            // 4. 3D MEDICAL CROSS & ORBITING CLINICAL RING
-            const crossGroup = new THREE.Group();
-            const crossMat = new THREE.MeshPhysicalMaterial({
-                color: 0x38BDF8,
-                emissive: 0x0284C7,
-                emissiveIntensity: 0.3,
-                roughness: 0.25,
-                metalness: 0.2,
-                clearcoat: 0.8
-            });
-            const vBar = new THREE.Mesh(new THREE.BoxGeometry(0.32, 1.05, 0.24), crossMat);
-            const hBar = new THREE.Mesh(new THREE.BoxGeometry(1.05, 0.32, 0.24), crossMat);
-            const orbitRing = new THREE.Mesh(
-                new THREE.TorusGeometry(0.95, 0.025, 12, 48),
-                new THREE.MeshBasicMaterial({ color: 0x2DD4BF, transparent: true, opacity: 0.65 })
-            );
-            orbitRing.rotation.x = 1.1;
-            crossGroup.add(vBar, hBar, orbitRing);
-            crossGroup.position.set(1.3, 2.3, -1.0);
-            rootGroup.add(crossGroup);
-
-            // Mouse Parallax Tracking
-            let targetMouseX = 0;
-            let targetMouseY = 0;
-            const onMouseMove = (e) => {
-                targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-                targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-            };
-            window.addEventListener('mousemove', onMouseMove, { passive: true });
-
-            // Responsive Resize Handling
-            const onResize = () => {
-                const container = document.getElementById('hero');
-                if (!container) return;
-                const w = container.clientWidth;
-                const h = container.clientHeight;
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-                renderer.setSize(w, h);
-            };
-            window.addEventListener('resize', onResize, { passive: true });
-
-            // Continuous 60fps 3D Animation Loop
-            const clock = new THREE.Clock();
-            function animate3D() {
+            function renderFrame(now) {
                 if (!document.getElementById('hero-3d-canvas')) {
-                    window.removeEventListener('mousemove', onMouseMove);
-                    window.removeEventListener('resize', onResize);
+                    window.removeEventListener('resize', resizeCanvas);
+                    if (resizeObserver) resizeObserver.disconnect();
                     return;
                 }
-                hero3DAnimId = requestAnimationFrame(animate3D);
-                const t = clock.getElapsedTime();
 
-                // Gentle floating & plunger compression animation on Syringe
-                syringeGroup.position.y = 1.6 + Math.sin(t * 1.4) * 0.22;
-                syringeGroup.rotation.y = 0.4 + Math.sin(t * 0.8) * 0.25;
-                const pump = (Math.sin(t * 1.8) + 1) * 0.14;
-                plungerGroup.position.y = -pump;
-                liquid.scale.y = Math.max(0.45, 1 - pump * 0.7);
-                liquid.position.y = -0.35 - pump * 0.35;
+                hero3DAnimId = requestAnimationFrame(renderFrame);
+                const t = (now - startTime) * 0.001;
 
-                // Contoured Surgical Mask gentle sway
-                maskGroup.position.y = -1.7 + Math.cos(t * 1.2) * 0.2;
-                maskGroup.rotation.y = -0.45 + Math.sin(t * 0.9) * 0.22;
-                maskGroup.rotation.z = 0.18 + Math.cos(t * 1.1) * 0.08;
+                // Uniform scale driven strictly by height so wide screens never distort proportions
+                const scaleFactor = Math.min(Math.max(height / 315, 0.95), 1.48);
 
-                // Medicine Capsule slow 3D tumble
-                capsuleGroup.rotation.x += 0.012;
-                capsuleGroup.rotation.y += 0.015;
-                capsuleGroup.position.y = -1.3 + Math.sin(t * 1.6 + 1) * 0.18;
+                ctx.clearRect(0, 0, width, height);
 
-                // Medical Cross & Orbit Ring spin
-                crossGroup.rotation.y = Math.sin(t * 0.7) * 0.4;
-                orbitRing.rotation.z += 0.02;
-                crossGroup.position.y = 2.3 + Math.cos(t * 1.3) * 0.15;
+                const scenePolys = [];
 
-                // Smooth camera/scene parallax response
-                rootGroup.rotation.y += (targetMouseX * 0.22 - rootGroup.rotation.y) * 0.05;
-                rootGroup.rotation.x += (targetMouseY * 0.15 - rootGroup.rotation.x) * 0.05;
+                // Smooth, executive ambient floating & gentle 3D rotation
+                const floatY = Math.sin(t * 1.35) * 11;
+                const pump = (Math.sin(t * 1.65) + 1) * 16; // Smooth fluid draw/dispense cycle
+                const syrOffset = { x: 10, y: -6 + floatY, z: 0 };
+                const syrRot = {
+                    x: 0.24 + Math.sin(t * 0.7) * 0.07,
+                    y: Math.sin(t * 0.65) * 0.32 + 0.35,
+                    z: -0.62 + Math.cos(t * 0.55) * 0.04
+                };
 
-                renderer.render(scene, camera);
+                function toWorld(localPt) {
+                    const r = rotatePoint(localPt, syrRot.x, syrRot.y, syrRot.z);
+                    return {
+                        x: (r.x + syrOffset.x) * scaleFactor,
+                        y: (r.y + syrOffset.y) * scaleFactor,
+                        z: (r.z + syrOffset.z) * scaleFactor
+                    };
+                }
+
+                function pushCylinder(rTop, rBot, h, segs, colorFn, localY, stroke = null) {
+                    const raw = createCylinderPolygons(rTop, rBot, h, segs, colorFn, { x: 0, y: localY, z: 0 }, { x: 0, y: 0, z: 0 }, stroke);
+                    for (const poly of raw) {
+                        scenePolys.push({
+                            pts: poly.pts.map(toWorld),
+                            fill: poly.fill,
+                            stroke: poly.stroke
+                        });
+                    }
+                }
+
+                function pushCap(r, localY, segs, fill, stroke = null) {
+                    const raw = createCapPolygon(r, localY, segs, fill, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 }, stroke);
+                    for (const poly of raw) {
+                        scenePolys.push({
+                            pts: poly.pts.map(toWorld),
+                            fill: poly.fill,
+                            stroke: poly.stroke
+                        });
+                    }
+                }
+
+                // 1. Plunger Thumb Press Flange (Teal Anodized Finish)
+                pushCylinder(26, 26, 6, 24,
+                    a => `hsl(174, 86%, ${42 + Math.cos(a) * 18}%)`,
+                    -132 + pump, 'rgba(255,255,255,0.18)'
+                );
+                pushCap(26, -135 + pump, 24, '#2DD4BF', 'rgba(255,255,255,0.25)');
+
+                // 2. Precision Plunger Shaft (Polished Chrome)
+                pushCylinder(6.5, 6.5, 86, 16,
+                    a => `hsl(212, 24%, ${74 + Math.cos(a) * 20}%)`,
+                    -88 + pump
+                );
+
+                // 3. Dual-Seal Medical Rubber Stopper
+                pushCylinder(19.2, 19.2, 13, 24,
+                    a => `hsl(218, 48%, ${14 + Math.cos(a) * 9}%)`,
+                    -44 + pump
+                );
+                pushCap(19.2, -50.5 + pump, 24, '#0F172A');
+
+                // 4. Luminous Teal Clinical Fluid Chamber
+                const serumH = Math.max(28, 78 - pump);
+                const serumCenterY = 41 - serumH * 0.5;
+                pushCylinder(18.6, 18.6, serumH, 24,
+                    a => `hsla(174, 94%, ${46 + Math.cos(a) * 18}%, 0.9)`,
+                    serumCenterY
+                );
+                pushCap(18.6, serumCenterY - serumH * 0.5, 24, 'rgba(94, 234, 212, 0.92)');
+
+                // 5. Ergonomic Barrel Finger Flange
+                pushCylinder(33, 33, 6, 28,
+                    a => `rgba(241, 245, 249, ${0.78 + Math.cos(a) * 0.18})`,
+                    -68, 'rgba(255,255,255,0.28)'
+                );
+                pushCap(33, -71, 28, 'rgba(226, 232, 240, 0.65)');
+
+                // 6. Borosilicate Translucent Glass Barrel with Specular Sheen
+                pushCylinder(21.5, 21.5, 114, 28,
+                    a => {
+                        const spec = Math.pow(Math.max(0, Math.cos(a - 0.5)), 4);
+                        return `rgba(224, 242, 254, ${0.18 + spec * 0.42})`;
+                    },
+                    -11, 'rgba(255, 255, 255, 0.14)'
+                );
+
+                // 7. Luer-Lock Collar & Tapered Nozzle Tip
+                pushCylinder(13, 9.5, 16, 20,
+                    a => `hsl(174, 88%, ${38 + Math.cos(a) * 16}%)`,
+                    54, 'rgba(255,255,255,0.16)'
+                );
+                pushCylinder(6.5, 4.5, 11, 16,
+                    a => `hsl(210, 28%, ${80 + Math.cos(a) * 16}%)`,
+                    67
+                );
+
+                // 8. Surgical-Grade Beveled Stainless-Steel Needle
+                pushCylinder(2.1, 0.7, 74, 12,
+                    a => `hsl(210, 32%, ${84 + Math.cos(a) * 15}%)`,
+                    108
+                );
+
+                // Painter's Algorithm Depth Sorting (Back-to-Front)
+                for (const poly of scenePolys) {
+                    let zSum = 0;
+                    for (let i = 0; i < poly.pts.length; i++) zSum += poly.pts[i].z;
+                    poly.avgZ = zSum / poly.pts.length;
+                }
+                scenePolys.sort((a, b) => b.avgZ - a.avgZ);
+
+                // Soft Ambient Glow Behind Syringe
+                const centerProj = project3D(toWorld({ x: 0, y: 0, z: 0 }));
+                const glowRadius = 155 * scaleFactor;
+                const radialGlow = ctx.createRadialGradient(
+                    centerProj.x, centerProj.y, 10,
+                    centerProj.x, centerProj.y, glowRadius
+                );
+                radialGlow.addColorStop(0, 'rgba(45, 212, 191, 0.22)');
+                radialGlow.addColorStop(0.6, 'rgba(0, 180, 162, 0.07)');
+                radialGlow.addColorStop(1, 'rgba(10, 25, 47, 0)');
+                ctx.fillStyle = radialGlow;
+                ctx.beginPath();
+                ctx.arc(centerProj.x, centerProj.y, glowRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Render Depth-Sorted Syringe Polygons
+                for (const poly of scenePolys) {
+                    const proj = poly.pts.map(p => project3D(p));
+                    ctx.beginPath();
+                    ctx.moveTo(proj[0].x, proj[0].y);
+                    for (let i = 1; i < proj.length; i++) {
+                        ctx.lineTo(proj[i].x, proj[i].y);
+                    }
+                    ctx.closePath();
+                    ctx.fillStyle = poly.fill;
+                    ctx.fill();
+                    if (poly.stroke) {
+                        ctx.strokeStyle = poly.stroke;
+                        ctx.lineWidth = 0.75;
+                        ctx.stroke();
+                    }
+                }
+
+                // Calibrated Volumetric Graduation Markings (1ml - 5ml) on Front Barrel Surface
+                const tickLevels = [-46, -33, -20, -7, 6, 19, 32];
+                ctx.lineCap = 'round';
+                tickLevels.forEach((yTick, idx) => {
+                    const isMajor = idx % 2 === 0;
+                    const spanAngle = isMajor ? 0.42 : 0.24;
+                    const rTick = 21.8;
+                    const pStart = project3D(toWorld({
+                        x: Math.sin(-spanAngle) * rTick,
+                        y: yTick,
+                        z: -Math.cos(-spanAngle) * rTick
+                    }));
+                    const pEnd = project3D(toWorld({
+                        x: Math.sin(spanAngle) * rTick,
+                        y: yTick,
+                        z: -Math.cos(spanAngle) * rTick
+                    }));
+
+                    ctx.beginPath();
+                    ctx.moveTo(pStart.x, pStart.y);
+                    ctx.lineTo(pEnd.x, pEnd.y);
+                    ctx.strokeStyle = isMajor ? 'rgba(255, 255, 255, 0.78)' : 'rgba(255, 255, 255, 0.45)';
+                    ctx.lineWidth = isMajor ? 1.6 : 1.1;
+                    ctx.stroke();
+                });
             }
-            animate3D();
+
+            hero3DAnimId = requestAnimationFrame(renderFrame);
         }
 
         function init3DCardTilt() {
